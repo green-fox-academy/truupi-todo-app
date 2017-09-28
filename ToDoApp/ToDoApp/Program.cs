@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,23 @@ namespace ToDoApp
     {
         static void Main(string[] args)
         {
-            Welcome();
+            TaskList tasking = new TaskList();
+            if (args.Contains("-l"))
+            {
+                Console.WriteLine();
+                tasking.ReadingListTxt();
+            }
+            else
+            {
+                ReadingArgmnts();
+            }
+            Console.ReadLine();
         }
 
-        static void Welcome()
+        static void ReadingArgmnts()
         {
-            Console.WriteLine("\nCommand Line Todo Application\n" + "=============================\n\n" + "Command line arguments:\n" + "-l   Lists all the tasks\n" +
-                "-a   Adds a new task\n" + "-r   Removes a task\n" + "-c   Completes a task\n");
-            Console.ReadLine();
+            string path = @"..\..\assets\welcomemsg.txt";
+            Console.WriteLine(File.ReadAllText(path));
         }
     }
 }
