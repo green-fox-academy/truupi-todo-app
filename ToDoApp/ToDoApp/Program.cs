@@ -12,16 +12,21 @@ namespace ToDoApp
         static void Main(string[] args)
         {
             TaskList tasking = new TaskList();
+
             if (args.Contains("-l"))
             {
-                Console.WriteLine();
+                Console.WriteLine();    // adding an extra line before listing tasks for separation
                 tasking.ReadingListTxt();
+            }
+            else if (args.Contains("-a"))
+            {
+                tasking.AddTask(args[1]);
             }
             else
             {
                 ReadingArgmnts();
+                Console.ReadLine();
             }
-            Console.ReadLine();
         }
 
         static void ReadingArgmnts()
