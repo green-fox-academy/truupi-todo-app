@@ -1,4 +1,6 @@
-Walk the dog
-Buy milk
-Do homework
-Feed the monkey
+[ ] Walk the dog
+[ ] Buy milk
+[ ] Do homework
+[ ] Feed the monkey
+[ ] Test
+[ ] Something to delete later
