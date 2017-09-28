@@ -15,12 +15,15 @@ namespace ToDoApp
 
             if (args.Contains("-l"))
             {
-                Console.WriteLine();    // adding an extra line before listing tasks for separation
-                tasking.ReadingListTxt();
+                tasking.ListTasks();
             }
             else if (args.Contains("-a"))
             {
                 tasking.AddTask(args[1]);
+            }
+            else if (args.Contains("-r"))
+            {
+                tasking.RemoveTask(args[1]);
             }
             else
             {

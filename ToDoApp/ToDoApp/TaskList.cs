@@ -10,27 +10,43 @@ namespace ToDoApp
     class TaskList 
     {
         static string path = @"..\..\assets\todolist.txt";
-        string[] result = File.ReadAllLines(path);
+        static string[] taskArray = File.ReadAllLines(path);
 
-        public void ReadingListTxt()
+        internal void ListTasks()
         {
-            if (result.Length == 0)
+            switch (taskArray.Length)
             {
-                Console.WriteLine("No todos for today! :)");
-            }
-            else
-            {
-                for (int i = 0; i < result.Length; i++)
+                case 0:
+                    Console.WriteLine("No todos for today! :)");
+                    break;
+                default:
                 {
-                    Console.WriteLine("{0} - {1}", i + 1, result[i]);
+                    WriteTasksToConsole();
+                    break;
                 }
             }
         }
 
-        public void AddTask(string inputTask)
+        internal void WriteTasksToConsole()
         {
-            using (StreamWriter srwriter = File.AppendText(path))
-                { srwriter.WriteLine(inputTask); }
+            for (int i = 0; i < taskArray.Length; i++)
+            {
+                Console.WriteLine("{0} - {1}", i + 1, taskArray[i]);
+            }
+        }
+
+        internal void RemoveTask(string taskPlace)
+        {
+            var taskList = new List<string>(System.IO.File.ReadAllLines(path));
+            taskList.RemoveAt(Convert.ToInt32(taskPlace) - 1);
+
+            File.WriteAllLines(path, taskList);
+        }
+
+        internal void AddTask(string inputTask)
+        {
+            using (StreamWriter taskWriter = File.AppendText(path))
+                { taskWriter.WriteLine(inputTask); }
         }
     }
 }
