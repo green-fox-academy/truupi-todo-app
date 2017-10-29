@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToDoApp
 {
@@ -25,13 +22,13 @@ namespace ToDoApp
             {
                     tasking.AddTask(args);
             }
+            else if (args.Contains("-c"))
+            {
+                tasking.CheckTask(args[1]);
+            }
             else if (args.Contains("-r"))
             {
                 tasking.RemoveTask(args[1]);
-            }
-            else if (args.Contains("-f"))
-            {
-                tasking.CheckTask();
             }
             else
             {

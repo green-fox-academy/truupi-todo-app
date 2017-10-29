@@ -2,8 +2,6 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToDoApp
 {
@@ -29,7 +27,7 @@ namespace ToDoApp
 
         internal void RemoveTask(string argsPlace)
         {
-            var taskList = new List<string>(System.IO.File.ReadAllLines(path));
+            var taskList = new List<string>(File.ReadAllLines(path));
             if (taskList.Count >= 2)
             {
                 taskList.RemoveAt(Convert.ToInt32(argsPlace) - 1);
@@ -37,9 +35,14 @@ namespace ToDoApp
             }
         }
 
-        internal void CheckTask()
+        internal void CheckTask(string inputPlace)
         {
-            
+            int argsPlace = (Convert.ToInt32(inputPlace));
+            var taskList = new List<string>(File.ReadAllLines(path));
+            string[] taskToOverwrite = taskList[(argsPlace - 1)].Split(']');
+            taskList.Insert((argsPlace - 1), $"{checkedBox} {taskToOverwrite[1].Trim(' ')}");
+            File.WriteAllLines(path, taskList);
+            RemoveTask((argsPlace + 1).ToString());
         }
 
         internal void AddTask(string[] args)
@@ -50,7 +53,7 @@ namespace ToDoApp
             }
             else
             {
-            using (StreamWriter taskWriter = File.AppendText(path)) { taskWriter.WriteLine("{0} {1}", emptyBox, args[1]); }
+                using (StreamWriter taskWriter = File.AppendText(path)) { taskWriter.WriteLine("{0} {1}", emptyBox, args[1]); }
             }
         }
 

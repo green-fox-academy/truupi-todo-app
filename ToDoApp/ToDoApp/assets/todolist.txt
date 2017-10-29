@@ -1,6 +1,6 @@
 [ ] Walk the dog
-[ ] Buy milk
-[ ] Do homework
-[ ] Feed the monkey
-[ ] Test
-[ ] Something to delete later
+[x] Buy milk
+[x] Feed the monkey
+[x] Feed the monkey
+[x]  Valamit akarok csinalni
+[ ] Valamit akarok csinalni
